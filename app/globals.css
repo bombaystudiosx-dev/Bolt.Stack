@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for mobile-first sports betting analytics with green theme */
+  --background: #1f2937; /* Dark gray for background */
+  --foreground: #f1f5f9; /* Light gray for primary text */
+  --card: #374151; /* Medium gray for card backgrounds */
+  --card-foreground: #f1f5f9; /* Light gray for card text */
+  --popover: #374151; /* Medium gray for popovers */
+  --popover-foreground: #f1f5f9; /* Light gray for popover text */
+  --primary: #15803d; /* Green for main call-to-action buttons */
+  --primary-foreground: #ffffff; /* White text on primary buttons */
+  --secondary: #84cc16; /* Bright green for secondary actions */
+  --secondary-foreground: #1f2937; /* Dark gray for text on secondary actions */
+  --muted: #6b7280; /* Muted text for less prominent information */
+  --muted-foreground: #f1f5f9; /* Light gray for muted text */
+  --accent: #10b981; /* Additional accent green for highlights */
+  --accent-foreground: #ffffff; /* White text for accent elements */
+  --destructive: #dc2626; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text for destructive actions */
+  --border: #4b5563; /* Darker gray for borders */
+  --input: #374151; /* Input fields background */
+  --ring: #15803d; /* Focus ring color for accessibility */
+  --chart-1: #15803d; /* Green for first chart data */
+  --chart-2: #84cc16; /* Bright green for second chart data */
+  --chart-3: #10b981; /* Additional green for third chart data */
+  --chart-4: #4b5563; /* Darker chart color */
+  --chart-5: #dc2626; /* Red for negative chart data */
+  --radius: 0.5rem; /* Corner rounding for cards and buttons */
+  --sidebar: #1f2937; /* Dark gray for sidebar background */
+  --sidebar-foreground: #f1f5f9; /* Light gray for sidebar text */
+  --sidebar-primary: #15803d; /* Green for sidebar primary actions */
+  --sidebar-primary-foreground: #ffffff; /* White text for primary actions in sidebar */
+  --sidebar-accent: #84cc16; /* Bright green for sidebar accents */
+  --sidebar-accent-foreground: #1f2937; /* Dark gray for sidebar accent text */
+  --sidebar-border: #4b5563; /* Border color for sidebar */
+  --sidebar-ring: #15803d; /* Focus ring for sidebar elements */
+}
+
+.dark {
+  /* Dark mode uses same colors as our primary dark theme for consistency */
+  --background: #1f2937;
+  --foreground: #f1f5f9;
+  --card: #374151;
+  --card-foreground: #f1f5f9;
+  --popover: #374151;
+  --popover-foreground: #f1f5f9;
+  --primary: #15803d;
+  --primary-foreground: #ffffff;
+  --secondary: #84cc16;
+  --secondary-foreground: #1f2937;
+  --muted: #6b7280;
+  --muted-foreground: #f1f5f9;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #4b5563;
+  --input: #374151;
+  --ring: #15803d;
+  --chart-1: #15803d;
+  --chart-2: #84cc16;
+  --chart-3: #10b981;
+  --chart-4: #4b5563;
+  --chart-5: #dc2626;
+  --sidebar: #1f2937;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #15803d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #84cc16;
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: #4b5563;
+  --sidebar-ring: #15803d;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added mobile-specific enhancements and animations */
+@layer utilities {
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .animate-in {
+    animation-fill-mode: both;
+  }
+
+  .fade-in-50 {
+    animation: fade-in 0.3s ease-out;
+    animation-fill-mode: both;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Enhanced touch targets for mobile */
+@media (max-width: 768px) {
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
